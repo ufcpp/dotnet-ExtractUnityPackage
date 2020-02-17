@@ -6,6 +6,16 @@
     <RootNamespace>ExtractUnityPackage</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>dotnet-ExtractUnityPackage</PackageId>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>dotnet-ExtractUnityPackage</ToolCommandName>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Description>A dotnet global tool for extracting .unitypackage</Description>
+    <Authors>Nobuyuki Iwanaga</Authors>
+    <PackageProjectUrl>https://github.com/ufcpp/dotnet-ExtractUnityPackage</PackageProjectUrl>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.5.1" />
     <PackageReference Include="SharpZipLib" Version="1.2.0" />
