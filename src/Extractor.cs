@@ -27,7 +27,7 @@ namespace ExtractUnityPackage
                 {
                     var folder = Path.GetDirectoryName(Path.GetFullPath(path));
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-                    File.Copy(assetPath, path);
+                    File.Copy(assetPath, path, true);
                 }
                 else
                 {
@@ -35,7 +35,7 @@ namespace ExtractUnityPackage
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
                 }
                 var assetMetaPath = Path.Combine(item, "asset.meta");
-                File.Copy(assetMetaPath, path + ".meta");
+                File.Copy(assetMetaPath, path + ".meta", true);
             }
 
             Directory.Delete(tempFolder, true);
