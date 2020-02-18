@@ -6,7 +6,7 @@ namespace ExtractUnityPackage
 {
     internal static class Extractor
     {
-        public static void ImportUnityPackage(string packagePath, string destinationFolderPath)
+        public static void ImportUnityPackage(string packagePath, string destinationFolderPath, bool overwrite)
         {
             var tempFolder = Path.Combine(Path.GetTempPath(), Path.GetFileName(packagePath) + ".unitypackage.extract");
 
@@ -27,7 +27,7 @@ namespace ExtractUnityPackage
                 {
                     var folder = Path.GetDirectoryName(Path.GetFullPath(path));
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-                    File.Copy(assetPath, path, true);
+                    if (overwrite || !File.Exists(path)) File.Copy(assetPath, path, true);
                 }
                 else
                 {
@@ -35,7 +35,8 @@ namespace ExtractUnityPackage
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
                 }
                 var assetMetaPath = Path.Combine(item, "asset.meta");
-                File.Copy(assetMetaPath, path + ".meta", true);
+                var metaPath = path + ".meta";
+                if (overwrite || !File.Exists(metaPath)) File.Copy(assetMetaPath, metaPath, true);
             }
 
             Directory.Delete(tempFolder, true);

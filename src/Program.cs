@@ -14,6 +14,9 @@ namespace ExtractUnityPackage
         [Required]
         public string Destination { get; }
 
+        [Option("-o|--overwrite", Description = "overwrites if file exists")]
+        public bool Overwrite { get; }
+
         static void Main(string[] args)
         {
             CommandLineApplication.Execute<Program>(args);
@@ -21,7 +24,7 @@ namespace ExtractUnityPackage
 
         public void OnExecute()
         {
-            Extractor.ImportUnityPackage(Package, Destination);
+            Extractor.ImportUnityPackage(Package, Destination, Overwrite);
         }
     }
 }
